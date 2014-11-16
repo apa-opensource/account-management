@@ -1,0 +1,34 @@
+fnc_account_management_index:
+    path:     /
+    defaults: { _controller: "FNCAccountManagementBundle:Account:index" }
+
+fnc_account_management_show:
+    path:     /{id}/show
+    defaults: { _controller: "FNCAccountManagementBundle:Account:show" }
+
+fnc_account_management_new:
+    path:     /new
+    defaults: { _controller: "FNCAccountManagementBundle:Account:new" }
+
+fnc_account_management_create:
+    path:     /create
+    defaults: { _controller: "FNCAccountManagementBundle:Account:create" }
+    requirements: { _method: post }
+
+fnc_account_management_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FNCAccountManagementBundle:Account:edit" }
+
+fnc_account_management_update:
+    path:     /{id}/update
+    defaults: { _controller: "FNCAccountManagementBundle:Account:update" }
+    requirements: { _method: post|put }
+
+fnc_account_management_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FNCAccountManagementBundle:Account:delete" }
+    requirements: { _method: post|delete }
+
+fnc_account_management_booking:
+    path:     /{id}/booking
+    defaults: { _controller: "FNCAccountManagementBundle:Account:booking" }

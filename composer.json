@@ -1,0 +1,16 @@
+{
+    "name": "fnc/account-management-bundle",
+    "require": {
+        "twbs/bootstrap": "~3.3",
+        "braincrafted/bootstrap-bundle": "~2.1",
+        "knplabs/knp-paginator-bundle": "~2.4",
+        "knplabs/knp-menu-bundle": "~2.0",
+        "oyejorge/less.php": "v1.7.0.2"
+    },
+    "authors": [
+        {
+            "name": "Carsten Eilers",
+            "email": "carsten.eilers@fncmedia.de"
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="5">
+                <source>account.disabled.0</source>
+                <target>no</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>account.disabled.1</source>
+                <target>yes</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>account.index</source>
+                <target>Account Overview</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>account.show</source>
+                <target>Account</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>account.edit</source>
+                <target>Edit Account</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>account.new</source>
+                <target>Create Account</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>menu.account.overview</source>
+                <target>Account Overview</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>menu.account.new</source>
+                <target>Create Account</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>menu.account</source>
+                <target>Account</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>account.booking.form.direction.load</source>
+                <target>load</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>account.booking.form.direction.redeem</source>
+                <target>redeem</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>account.message.booking.success</source>
+                <target>Booked sucessfully - New Balance %balance% %currency%</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>account.message.booking.error</source>
+                <target>Booking failed - %message%</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>account.booking.form.submit</source>
+                <target>book</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
