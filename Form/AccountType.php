@@ -2,7 +2,6 @@
 
 namespace FNC\Bundle\AccountManagementBundle\Form;
 
-use Proxies\__CG__\FNC\AccountBundle\Entity\Account;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
