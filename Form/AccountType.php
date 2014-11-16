@@ -16,17 +16,24 @@ class AccountType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', 'choice', array(
-                'choices' => $options['types']
-            ))
-            ->add('currency', 'choice', array(
-                'choices' => $options['currencies']
-            ))
+            ->add(
+                'type',
+                'choice',
+                array(
+                    'choices' => $options['types']
+                )
+            )
+            ->add(
+                'currency',
+                'choice',
+                array(
+                    'choices' => $options['currencies']
+                )
+            )
             ->add('balance')
             ->add('disabled')
             ->add('number')
-            ->add('pin')
-        ;
+            ->add('pin');
     }
 
     /**
@@ -34,11 +41,13 @@ class AccountType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class'    => 'FNC\Bundle\AccountServiceBundle\Entity\Account',
-            'currencies'    => array(),
-            'types'         => array()
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'FNC\Bundle\AccountServiceBundle\Entity\Account',
+                'currencies' => array(),
+                'types' => array()
+            )
+        );
     }
 
     /**

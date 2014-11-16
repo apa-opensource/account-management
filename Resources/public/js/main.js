@@ -1,24 +1,21 @@
 console.info("TEST");
 
-(function($) {
+(function ($) {
     function initBookingModal() {
-        $('.booking-form').submit(function(e)
-        {
+        $('.booking-form').submit(function (e) {
             var postData = $(this).serializeArray();
             var formURL = $(this).attr("action");
             $.ajax(
                 {
-                    url : formURL,
+                    url: formURL,
                     type: "POST",
-                    data : postData,
-                    success:function(data, textStatus, jqXHR)
-                    {
+                    data: postData,
+                    success: function (data, textStatus, jqXHR) {
                         $('.modal-content').html(data);
 
                         initBookingModal();
                     },
-                    error: function(jqXHR, textStatus, errorThrown)
-                    {
+                    error: function (jqXHR, textStatus, errorThrown) {
                         //if fails
                     }
                 });
@@ -27,10 +24,10 @@ console.info("TEST");
         });
     }
 
-    $('[data-target=modal]').on('click',function() {
+    $('[data-target=modal]').on('click', function () {
         console.info(this);
 
-        $.get($(this).attr('href'), function(data) {
+        $.get($(this).attr('href'), function (data) {
             $('.modal-content').html(data);
 
             $('.modal').modal();

@@ -4,16 +4,13 @@ namespace FNC\Bundle\AccountManagementBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use FNC\Bundle\AccountManagementBundle\Form\AccountType;
+use FNC\Bundle\AccountServiceBundle\Entity\Account;
 use FNC\Bundle\AccountServiceBundle\Entity\History;
 use FNC\Bundle\AccountServiceBundle\Service\Service;
-use Symfony\Bundle\FrameworkBundle\Translation\Translator;
-use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use FNC\Bundle\AccountServiceBundle\Entity\Account;
-use FNC\Bundle\AccountManagementBundle\Form\AccountType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Account controller.
@@ -39,21 +36,26 @@ class AccountController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dql   = "SELECT a FROM FNCAccountServiceBundle:Account a";
+        $dql = "SELECT a FROM FNCAccountServiceBundle:Account a";
 
         $query = $em->createQuery($dql);
 
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
-            $this->get('request')->query->get('page', 1)/*page number*/,
-            10/*limit per page*/
+            $this->get('request')->query->get('page', 1) /*page number*/,
+            10
+        /*limit per page*/
         );
 
-        return $this->render('FNCAccountManagementBundle:Account:index.html.twig', array(
-            'pagination' => $pagination,
-        ));
+        return $this->render(
+            'FNCAccountManagementBundle:Account:index.html.twig',
+            array(
+                'pagination' => $pagination,
+            )
+        );
     }
+
     /**
      * Creates a new Account entity.
      *
@@ -72,10 +74,13 @@ class AccountController extends Controller
             return $this->redirect($this->generateUrl('management_account_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('FNCAccountManagementBundle:Account:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'FNCAccountManagementBundle:Account:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -90,12 +95,16 @@ class AccountController extends Controller
         $types = $this->container->getParameter('fnc_account_service.types');
         $currencies = $this->container->getParameter('fnc_account_service.currencies');
 
-        $form = $this->createForm(new AccountType(), $entity, array(
-            'action'        => $this->generateUrl('fnc_account_management_create'),
-            'method'        => 'POST',
-            'types'         => array_combine($types, $types),
-            'currencies'    => array_combine($currencies, $currencies)
-        ));
+        $form = $this->createForm(
+            new AccountType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('fnc_account_management_create'),
+                'method' => 'POST',
+                'types' => array_combine($types, $types),
+                'currencies' => array_combine($currencies, $currencies)
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -109,12 +118,15 @@ class AccountController extends Controller
     public function newAction()
     {
         $entity = new Account();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
-        return $this->render('FNCAccountManagementBundle:Account:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'FNCAccountManagementBundle:Account:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -133,10 +145,13 @@ class AccountController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('FNCAccountManagementBundle:Account:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'FNCAccountManagementBundle:Account:show.html.twig',
+            array(
+                'entity' => $entity,
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
@@ -156,11 +171,14 @@ class AccountController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('FNCAccountManagementBundle:Account:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'FNCAccountManagementBundle:Account:edit.html.twig',
+            array(
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
@@ -175,12 +193,16 @@ class AccountController extends Controller
         $types = $this->container->getParameter('fnc_account_service.types');
         $currencies = $this->container->getParameter('fnc_account_service.currencies');
 
-        $form = $this->createForm(new AccountType(), $entity, array(
-            'action'        => $this->generateUrl('fnc_account_management_update', array('id' => $entity->getId())),
-            'method'        => 'PUT',
-            'types'         => array_combine($types, $types),
-            'currencies'    => array_combine($currencies, $currencies)
-        ));
+        $form = $this->createForm(
+            new AccountType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('fnc_account_management_update', array('id' => $entity->getId())),
+                'method' => 'PUT',
+                'types' => array_combine($types, $types),
+                'currencies' => array_combine($currencies, $currencies)
+            )
+        );
 
         $form->remove('currency');
         $form->remove('balance');
@@ -189,6 +211,7 @@ class AccountController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Account entity.
      *
@@ -216,12 +239,16 @@ class AccountController extends Controller
             return $this->redirect($this->generateUrl('fnc_account_management_show', array('id' => $id)));
         }
 
-        return $this->render('FNCAccountManagementBundle:Account:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'FNCAccountManagementBundle:Account:edit.html.twig',
+            array(
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
+
     /**
      * Deletes a Account entity.
      *
@@ -239,7 +266,7 @@ class AccountController extends Controller
                 throw $this->createNotFoundException('Unable to find Account entity.');
             }
 
-            /* @var History $history*/
+            /* @var History $history */
             foreach ($entity->getHistory() as $history) {
                 $em->remove($history);
             }
@@ -279,7 +306,7 @@ class AccountController extends Controller
         /* @var Translator $tr */
         $tr = $this->get('translator');
 
-        /* @var EntityManager $em*/
+        /* @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
         /* @var EntityRepository $repo */
@@ -294,29 +321,42 @@ class AccountController extends Controller
 
         $direction = $bookingForm->get('direction')->getData();
 
-        $amount = ($direction === self::BOOKING_DIRECTION_LOAD ? 1 : -1 )* $bookingForm->get('amount')->getData();
+        $amount = ($direction === self::BOOKING_DIRECTION_LOAD ? 1 : -1) * $bookingForm->get('amount')->getData();
 
         if ($request->isMethod('POST')) {
             try {
-                $service->booking($account, $amount, $account->getCurrency(), Account::REFERENCE_CODE_BACKEND, microtime(), microtime());
+                $service->booking(
+                    $account,
+                    $amount,
+                    $account->getCurrency(),
+                    Account::REFERENCE_CODE_BACKEND,
+                    microtime(),
+                    microtime()
+                );
 
-                $message = $tr->trans('account.message.booking.success', array(
-                    '%balance%' => number_format($account->getBalance()/100, 2, '.', ''),
-                    '%currency%'=> $account->getCurrency()
-                ));
+                $message = $tr->trans(
+                    'account.message.booking.success',
+                    array(
+                        '%balance%' => number_format($account->getBalance() / 100, 2, '.', ''),
+                        '%currency%' => $account->getCurrency()
+                    )
+                );
 
                 $this->get('braincrafted_bootstrap.flash')->success($message);
             } catch (\Exception $ex) {
-                $message = $tr->trans('account.message.booking.error', array(
-                    '%message%' => $ex->getMessage()
-                ));
+                $message = $tr->trans(
+                    'account.message.booking.error',
+                    array(
+                        '%message%' => $ex->getMessage()
+                    )
+                );
 
                 $this->get('braincrafted_bootstrap.flash')->error($message);
             }
         }
 
         return array(
-            'booking_form'  => $bookingForm->createView()
+            'booking_form' => $bookingForm->createView()
         );
     }
 
@@ -332,12 +372,16 @@ class AccountController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('fnc_account_management_booking', array('id' => $id)))
             ->setMethod('POST')
-            ->add('direction', 'choice', array(
-                'choices'   => array(
-                    self::BOOKING_DIRECTION_LOAD   => 'account.booking.form.direction.load',
-                    self::BOOKING_DIRECTION_REDEEM => 'account.booking.form.direction.redeem'
+            ->add(
+                'direction',
+                'choice',
+                array(
+                    'choices' => array(
+                        self::BOOKING_DIRECTION_LOAD => 'account.booking.form.direction.load',
+                        self::BOOKING_DIRECTION_REDEEM => 'account.booking.form.direction.redeem'
+                    )
                 )
-            ))
+            )
             ->add('amount')
             ->add('submit', 'submit', array('label' => 'account.booking.form.submit'))
             ->getForm();

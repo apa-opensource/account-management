@@ -1,29 +1,29 @@
 {% extends 'FNCAccountManagementBundle::base.html.twig' %}
 
 {% block content -%}
-{{ parent() }}
+    {{ parent() }}
 
-<div class="row">
-    <div class="col-md-12">
-        <a href="{{ path('fnc_account_management_edit', { 'id': entity.id }) }}">
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>
-        </a>
-        <a data-target="modal" href="{{ path('fnc_account_management_booking', { 'id': entity.id }) }}">
-            <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-euro"></span>
-            </button>
-        </a>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ path('fnc_account_management_edit', { 'id': entity.id }) }}">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </a>
+            <a data-target="modal" href="{{ path('fnc_account_management_booking', { 'id': entity.id }) }}">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-euro"></span>
+                </button>
+            </a>
+        </div>
     </div>
-</div>
 
-<div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
 
-<div class="row">
-    <div class="col-md-12">
-        <table class="table">
-            <tbody>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tbody>
                 <tr>
                     <th>Id</th>
                     <td>{{ entity.id }}</td>
@@ -52,11 +52,11 @@
                     <th>Currency</th>
                     <td>{{ entity.currency }}</td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-        <table class="table">
-            <thead>
+            <table class="table">
+                <thead>
                 <tr>
                     <th>Id</th>
                     <th>Timestamp</th>
@@ -66,24 +66,24 @@
                     <th>Amount</th>
                     <th>New Balance</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 {% for history in entity.history %}
-                <tr>
-                    <td>{{ history.id }}</td>
-                    <td>{{ history.timestamp|date("m/d/Y") }}</td>
-                    <td>{{ history.referenceCode }}</td>
-                    <td>{{ history.referenceMessage }}</td>
-                    <td>{{ history.transactionCode }}</td>
-                    <td>{{ history.amount }}</td>
-                    <td>{{ history.newBalance }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ history.id }}</td>
+                        <td>{{ history.timestamp|date("m/d/Y") }}</td>
+                        <td>{{ history.referenceCode }}</td>
+                        <td>{{ history.referenceMessage }}</td>
+                        <td>{{ history.transactionCode }}</td>
+                        <td>{{ history.amount }}</td>
+                        <td>{{ history.newBalance }}</td>
+                    </tr>
                 {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
 
-        {{ form(delete_form, {'style':'inline'}) }}
+            {{ form(delete_form, {'style':'inline'}) }}
+        </div>
     </div>
-</div>
 {% endblock %}
