@@ -7,6 +7,12 @@
         "knplabs/knp-menu-bundle": "~2.0",
         "oyejorge/less.php": "v1.7.0.2"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "ssh://gitadmin@www.fncmedia.de:1222/~/account-service-bundle"
+        }
+    ],
     "authors": [
         {
             "name": "Carsten Eilers",
