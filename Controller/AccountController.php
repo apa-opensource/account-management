@@ -11,6 +11,7 @@ use FNC\Bundle\AccountServiceBundle\Service\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Account controller.
@@ -301,7 +302,7 @@ class AccountController extends Controller
     public function bookingAction(Request $request, $id)
     {
         /* @var Service $service */
-        $service = $this->get('fnc_account.service');
+        $service = $this->get('fnc_account_service.service');
 
         /* @var Translator $tr */
         $tr = $this->get('translator');

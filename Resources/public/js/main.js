@@ -1,5 +1,3 @@
-console.info("TEST");
-
 (function ($) {
     function initBookingModal() {
         $('.booking-form').submit(function (e) {
