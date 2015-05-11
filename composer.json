@@ -8,12 +8,6 @@
         "oyejorge/less.php": "v1.7.0.2",
         "fnc/account-service-bundle": "dev-master"
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "ssh://gitadmin@www.fncmedia.de:1222/~/account-service-bundle"
-        }
-    ],
     "authors": [
         {
             "name": "Carsten Eilers",
