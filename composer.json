@@ -6,7 +6,7 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "knplabs/knp-menu-bundle": "~2.0",
         "oyejorge/less.php": "v1.7.0.2",
-        "fnc/account-service-bundle": "dev-master"
+        "fnc/account-service-bundle": "dev-develop"
     },
     "authors": [
         {
